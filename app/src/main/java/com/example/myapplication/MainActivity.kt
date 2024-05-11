@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 var EvenAmount = 0
                 var NotEvenAmount = 0
                 var SumEvenAmount = 0
-
+//тест ч
 
 
                 for ((index, value) in userText.withIndex()) {
