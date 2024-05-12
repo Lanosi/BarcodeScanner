@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("My @log", "Hi")
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
+        //я долблю собак а хотелось бы диму
 
 
         bindingClass.btResult.setOnClickListener {
