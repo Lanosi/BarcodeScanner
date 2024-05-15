@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,8 +25,16 @@ class MainActivity : AppCompatActivity() {
         Log.d("My @log", "Hi")
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
-        //я долблю собак а хотелось бы диму
-
+        replaceFragment(Home())
+        bindingClass.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> replaceFragment(Home())
+                R.id.settings -> replaceFragment(Settings())
+                else -> {
+                }
+            }
+            true
+        }
 
         bindingClass.btResult.setOnClickListener {
             if (bindingClass.userText.text.toString() != "") {
@@ -67,6 +76,15 @@ class MainActivity : AppCompatActivity() {
                 bindingClass.tvResult.text = "Что-то введенно не верно"
             }
         }
+
+    }
+    private fun replaceFragment(fragment : Fragment){
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.commit()
+
 
     }
 
